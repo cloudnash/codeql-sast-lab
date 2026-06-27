@@ -24,11 +24,16 @@ jobs:
       with:
         languages: 'java-kotlin'
 
+    # STEP ADDED: Setup Java environment for compiling
     - name: Set up Java
       uses: actions/setup-java@v4
       with:
         java-version: '17'
         distribution: 'temurin'
+
+    # STEP ADDED: Execute compilation for CodeQL to monitor
+    - name: Build with Maven
+      run: mvn clean package -DskipTests
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
