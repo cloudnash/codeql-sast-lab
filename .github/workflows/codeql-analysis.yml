@@ -22,18 +22,8 @@ jobs:
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
-        languages: 'java-kotlin'
-
-    # STEP ADDED: Setup Java environment for compiling
-    - name: Set up Java
-      uses: actions/setup-java@v4
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-
-    # STEP ADDED: Execute compilation for CodeQL to monitor
-    - name: Build with Maven
-      run: mvn -f maven-based-java-project/pom.xml clean package -DskipTests
+        # Changed language matrix to look exclusively for JS/TS
+        languages: 'javascript-typescript'
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
