@@ -33,7 +33,7 @@ jobs:
 
     # STEP ADDED: Execute compilation for CodeQL to monitor
     - name: Build with Maven
-      run: mvn clean package -DskipTests
+      run: mvn -f maven-based-java-project/pom.xml clean package -DskipTests
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
